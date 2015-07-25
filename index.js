@@ -26,7 +26,30 @@
         inOrderTraverseNode(this.root, cb);
     };
 
+    BST.prototype.preOrderTraverseNode = function (cb) {
+        preOrderTraverseNode(this.root, cb);
+    };
+
+    BST.prototype.postOrderTraverseNode = function (cb) {
+        postOrderTraverseNode(this.root, cb);
+    };
+
     module.exports = BST;
+
+    if (module.parent === null) {
+        console.log('running this as the main module...');
+        main();
+    }
+
+    function main() {
+        var bst = new BST();
+        bst.add(18);
+        bst.add(4);
+        bst.add(32);
+        bst.add(5);
+
+        bst.postOrderTraverseNode(printNodeValue);
+    }
 
     /********** helper functions **********/
     function addNode(node, newNode) {
@@ -52,6 +75,22 @@
             inOrderTraverseNode(node.left, cb);
             cb(node.key);
             inOrderTraverseNode(node.right, cb);
+        }
+    }
+
+    function preOrderTraverseNode(node, cb) {
+        if (node !== null) {
+            cb(node.key);
+            preOrderTraverseNode(node.left, cb);
+            preOrderTraverseNode(node.right, cb);
+        }
+    }
+
+    function postOrderTraverseNode(node, cb) {
+        if (node !== null) {
+            postOrderTraverseNode(node.left, cb);
+            postOrderTraverseNode(node.right, cb);
+            cb(node.key);
         }
     }
 
