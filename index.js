@@ -34,6 +34,10 @@
         postOrderTraverseNode(this.root, cb);
     };
 
+    BST.prototype.min = function () {
+        return minNode(this.root);
+    };
+
     module.exports = BST;
 
     if (module.parent === null) {
@@ -47,8 +51,9 @@
         bst.add(4);
         bst.add(32);
         bst.add(5);
+        bst.add(1);
 
-        bst.postOrderTraverseNode(printNodeValue);
+        console.log('min value: ' + bst.min());
     }
 
     /********** helper functions **********/
@@ -94,8 +99,14 @@
         }
     }
 
-    function printNodeValue(value) {
-        console.log(value + ' ');
+    function minNode(node) {
+        if (node) {
+            while (node && node.left !== null) {
+                node = node.left;
+            }
+            return node.key;
+        }
+        return null;
     }
 
 }());
