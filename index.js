@@ -38,6 +38,10 @@
         return minNode(this.root);
     };
 
+    BST.prototype.max = function () {
+        return maxNode(this.root);
+    };
+
     module.exports = BST;
 
     if (module.parent === null) {
@@ -54,6 +58,7 @@
         bst.add(1);
 
         console.log('min value: ' + bst.min());
+        console.log('max value: ' + bst.max());
     }
 
     /********** helper functions **********/
@@ -103,6 +108,16 @@
         if (node) {
             while (node && node.left !== null) {
                 node = node.left;
+            }
+            return node.key;
+        }
+        return null;
+    }
+
+    function maxNode(node) {
+        if (node) {
+            while (node && node.right !== null) {
+                node = node.right;
             }
             return node.key;
         }
