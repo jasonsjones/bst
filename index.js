@@ -16,10 +16,13 @@
 
         if (this.root === null) {
             this.root = newNode;
-            console.log('just added root node...');
         } else {
             addNode(this.root, newNode);
         }
+    };
+
+    BST.prototype.contains = function (value) {
+        return containsNode(this.root, value);
     };
 
     BST.prototype.inOrderTraversal = function (cb) {
@@ -45,7 +48,6 @@
     module.exports = BST;
 
     if (module.parent === null) {
-        console.log('running this as the main module...');
         main();
     }
 
@@ -57,8 +59,14 @@
         bst.add(5);
         bst.add(1);
 
+        bst.inOrderTraversal(function (value) {
+            console.log(value);
+        })
+
         console.log('min value: ' + bst.min());
         console.log('max value: ' + bst.max());
+        console.log('contains 5: ' + bst.contains(5));
+        console.log('contains 7: ' + bst.contains(7));
     }
 
     /********** helper functions **********/
@@ -77,6 +85,20 @@
                 addNode(node.right, newNode);
             }
 
+        }
+    }
+
+    function containsNode(node, value) {
+        if (node === null) {
+            return false;
+        }
+
+        if (value < node.key) {
+            return containsNode(node.left, value);
+        } else if (value > node.key) {
+            return containsNode(node.right, value);
+        } else {
+            return true;
         }
     }
 
