@@ -86,25 +86,33 @@
             }
 
         // case 2: one leaf node
-        // case 2a: right child but no left child
-        } else if (removeNode.left === null && removeNode.right != null) {
-            if (removeNode === this.root) {
-                console.log('removing root node with a right child');
-                this.root = removeNode.right;
-            } else {
-                parent.right = removeNode.right;
-            }
-
-        // case 2b: left child but no right child
-        } else if (removeNode.left != null && removeNode.right === null) {
+        // case 2a: left child but no right child
+        } else if (removeNode.right === null) {
             if (removeNode === this.root) {
                 console.log('removing root node with a left child and no right');
                 this.root = removeNode.left;
-            } else {
+            } else if (isLeftChild) {
                 parent.left = removeNode.left;
+            } else {
+                parent.right = removeNode.left;
+            }
+
+        // TODO: fix this case to check if it a left child or not--see case 2a.
+        // case 2b: right child but no left child
+        } else if (removeNode.left === null) {
+            if (removeNode === this.root) {
+                console.log('removing root node with a right child');
+                this.root = removeNode.right;
+            } else (isLeftChild) {
+                parent.left = removeNode.right;
+            } else {
+                pareent.right = removedNode.left;
             }
 
         // case 3: both left and right nodes
+        // this is where it gets a bit harder...need to determine the replacement
+        // node.
+        // TODO: implement this section -- 3 cases to this.
         } else {
 
         }
