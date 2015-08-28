@@ -45,6 +45,74 @@
         return maxNode(this.root);
     };
 
+    BST.prototype.remove = function (key) {
+        var removeNode = this.root;
+        var parent = this.root;
+        var isLeftChild = true;
+
+        while (removeNode.key != key) {
+            parent = removeNode;
+
+            if (key < removeNode.key) {
+                isLeftChild = true;
+                removeNode = removeNode.left;
+            } else {
+                isLeftChild = false;
+                removeNode = removeNode.right;
+            }
+
+            if (removeNode === null) {
+                return false;
+            }
+        }
+
+        console.log('parent: ');
+        console.log(parent);
+        console.log('node of interest');
+        console.log(removeNode);
+
+        // case 1: leaf node
+        if (removeNode.left === null && removeNode.right === null) {
+            console.log('we have a leaf node');
+            if (removeNode === this.root) {
+                console.log('removing root node with no children');
+                this.root = null;
+            }
+
+            if (isLeftChild) {
+                parent.left = null;
+            } else {
+                parent.right = null;
+            }
+
+        // case 2: one leaf node
+        // case 2a: right child but no left child
+        } else if (removeNode.left === null && removeNode.right != null) {
+            if (removeNode === this.root) {
+                console.log('removing root node with a right child');
+                this.root = removeNode.right;
+            } else {
+                parent.right = removeNode.right;
+            }
+
+        // case 2b: left child but no right child
+        } else if (removeNode.left != null && removeNode.right === null) {
+            if (removeNode === this.root) {
+                console.log('removing root node with a left child and no right');
+                this.root = removeNode.left;
+            } else {
+                parent.left = removeNode.left;
+            }
+
+        // case 3: both left and right nodes
+        } else {
+
+        }
+
+        console.log(this.root);
+        return true;
+    };
+
     module.exports = BST;
 
     if (module.parent === null) {
@@ -54,19 +122,10 @@
     function main() {
         var bst = new BST();
         bst.add(18);
-        bst.add(4);
         bst.add(32);
-        bst.add(5);
-        bst.add(1);
+        bst.add(40);
 
-        bst.inOrderTraversal(function (value) {
-            console.log(value);
-        })
-
-        console.log('min value: ' + bst.min());
-        console.log('max value: ' + bst.max());
-        console.log('contains 5: ' + bst.contains(5));
-        console.log('contains 7: ' + bst.contains(7));
+        console.log('remove: ' + bst.remove(32));
     }
 
     /********** helper functions **********/
