@@ -50,7 +50,7 @@
         var parent = this.root;
         var isLeftChild = true;
 
-        while (removeNode.key != key) {
+        while (removeNode.key !== key) {
             parent = removeNode;
 
             if (key < removeNode.key) {
@@ -119,7 +119,7 @@
 
             var replacement = getReplacementNode(removeNode);
 
-            if (removeNode == this.root) {
+            if (removeNode === this.root) {
                 this.root = replacement;
 
             } else if (isLeftChild) {
@@ -129,7 +129,7 @@
                 parent.right = replacement;
             }
 
-            replacement.left = removeNode.left
+            replacement.left = removeNode.left;
         }
 
         return true;
@@ -227,14 +227,14 @@
 
         var focusNode = nodeToRemove.right;
 
-        while (focusNode != null) {
+        while (focusNode !== null) {
             replacementParent = replacementNode;
             replacementNode = focusNode;
 
             focusNode = focusNode.left;
         }
 
-        if (replacementNode != nodeToRemove.right) {
+        if (replacementNode !== nodeToRemove.right) {
             replacementParent.left = replacementNode.right;
             replacementNode.right = nodeToRemove.right;
         }
