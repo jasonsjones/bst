@@ -73,51 +73,65 @@
 
         // case 1: leaf node
         if (removeNode.left === null && removeNode.right === null) {
-            console.log('we have a leaf node');
+
             if (removeNode === this.root) {
-                console.log('removing root node with no children');
                 this.root = null;
             }
 
             if (isLeftChild) {
                 parent.left = null;
+
             } else {
                 parent.right = null;
             }
 
-        // case 2: one leaf node
+        // case 2: one child node
         // case 2a: left child but no right child
         } else if (removeNode.right === null) {
+
             if (removeNode === this.root) {
-                console.log('removing root node with a left child and no right');
                 this.root = removeNode.left;
+
             } else if (isLeftChild) {
                 parent.left = removeNode.left;
+
             } else {
                 parent.right = removeNode.left;
             }
 
-        // TODO: fix this case to check if it a left child or not--see case 2a.
         // case 2b: right child but no left child
         } else if (removeNode.left === null) {
+
             if (removeNode === this.root) {
-                console.log('removing root node with a right child');
                 this.root = removeNode.right;
-            } else (isLeftChild) {
+
+            } else if (isLeftChild) {
                 parent.left = removeNode.right;
+
             } else {
-                pareent.right = removedNode.left;
+                parent.right = removeNode.left;
             }
 
         // case 3: both left and right nodes
         // this is where it gets a bit harder...need to determine the replacement
         // node.
-        // TODO: implement this section -- 3 cases to this.
         } else {
 
+            var replacement = getReplacementNode(removeNode);
+
+            if (removeNode == this.root) {
+                this.root = replacement;
+
+            } else if (isLeftChild) {
+                parent.left = replacement;
+
+            } else {
+                parent.right = replacement;
+            }
+
+            replacement.left = removeNode.left
         }
 
-        console.log(this.root);
         return true;
     };
 
@@ -128,12 +142,6 @@
     }
 
     function main() {
-        var bst = new BST();
-        bst.add(18);
-        bst.add(32);
-        bst.add(40);
-
-        console.log('remove: ' + bst.remove(32));
     }
 
     /********** helper functions **********/
@@ -211,6 +219,27 @@
             return node.key;
         }
         return null;
+    }
+
+    function getReplacementNode(nodeToRemove) {
+        var replacementParent = nodeToRemove;
+        var replacementNode = nodeToRemove;
+
+        var focusNode = nodeToRemove.right;
+
+        while (focusNode != null) {
+            replacementParent = replacementNode;
+            replacementNode = focusNode;
+
+            focusNode = focusNode.left;
+        }
+
+        if (replacementNode != nodeToRemove.right) {
+            replacementParent.left = replacementNode.right;
+            replacementNode.right = nodeToRemove.right;
+        }
+
+        return replacementNode;
     }
 
 }());
