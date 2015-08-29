@@ -66,11 +66,6 @@
             }
         }
 
-        console.log('parent: ');
-        console.log(parent);
-        console.log('node of interest');
-        console.log(removeNode);
-
         // case 1: leaf node
         if (removeNode.left === null && removeNode.right === null) {
 
