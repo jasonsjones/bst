@@ -32,16 +32,30 @@ describe('A Binary Search Tree', function () {
     });
 
     describe('basic functionality', function () {
-        it('contains a key after it is added to the tree', function () {
+
+        beforeEach(function () {
             bst.add(50);
             bst.add(75);
             bst.add(25);
-            expect(bst.contains(75)).to.be.true;
-            expect(bst.contains(85)).to.be.false;
+            bst.add(90);
+            bst.add(80);
+            bst.add(15);
+            bst.add(10);
+            bst.add(85);
         });
 
-        it('returns the min value in the tree');
-        it('returns the max value in the tree');
+        it('contains a key after it is added to the tree', function () {
+            expect(bst.contains(75)).to.be.true;
+            expect(bst.contains(87)).to.be.false;
+        });
+
+        it('returns the min value in the tree', function () {
+            expect(bst.min()).to.equal(10);
+        });
+
+        it('returns the max value in the tree', function () {
+            expect(bst.max()).to.equal(90);
+        });
     });
 
     describe('traversal', function () {
