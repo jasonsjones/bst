@@ -7,8 +7,13 @@
         this.left = null;
     };
 
-    var BST = function () {
+    function basicCompare(a, b) {
+        return a - b;
+    }
+
+    var BST = function (compareFn) {
         this.root = null;
+        this.cmp = compareFn || basicCompare;
     };
 
     BST.prototype.add = function (value) {
@@ -17,7 +22,7 @@
         if (this.root === null) {
             this.root = newNode;
         } else {
-            addNode(this.root, newNode);
+            addNode(this.root, newNode, this.cmp);
         }
     };
 
@@ -140,19 +145,19 @@
     }
 
     /********** helper functions **********/
-    function addNode(node, newNode) {
-        if (newNode.key < node.key) {
+    function addNode(node, newNode, cmp) {
+        if (cmp(node.key, newNode.key) > 0) {
             if (node.left === null) {
                 node.left = newNode;
             } else {
-                addNode(node.left, newNode);
+                addNode(node.left, newNode, cmp);
             }
 
         } else {
             if (node.right === null) {
                 node.right = newNode;
             } else {
-                addNode(node.right, newNode);
+                addNode(node.right, newNode, cmp);
             }
 
         }
