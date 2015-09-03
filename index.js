@@ -104,7 +104,7 @@
                 parent.left = removeNode.right;
 
             } else {
-                parent.right = removeNode.left;
+                parent.right = removeNode.right;
             }
 
         // case 3: both left and right nodes
