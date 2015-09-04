@@ -56,11 +56,36 @@ describe('A Binary Search Tree', function () {
         it('returns the max value in the tree', function () {
             expect(bst.max()).to.equal(90);
         });
+
+        it('returns false if it attempts to remove a value not in the tree', function () {
+            expect(bst.contains(32)).to.be.false;
+            expect(bst.remove(32)).to.be.false;
+        });
+
+        it('returns true if it removes a value from the tree', function () {
+            expect(bst.contains(90)).to.be.true;
+            expect(bst.remove(90)).to.be.true;
+            expect(bst.contains(90)).to.be.false;
+
+        });
     });
 
     describe('traversal', function () {
+
+        beforeEach(function () {
+            bst.add(50);
+            bst.add(75);
+            bst.add(25);
+            bst.add(90);
+            bst.add(80);
+            bst.add(15);
+            bst.add(10);
+            bst.add(85);
+        });
+
         it('correctly traverses the tree in order');
         it('correctly traverses the tree pre order');
         it('correctly traverses the tree post order');
     });
 });
+
