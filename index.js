@@ -27,7 +27,7 @@
     };
 
     BST.prototype.contains = function (value) {
-        return containsNode(this.root, value);
+        return containsNode(this.root, value, this.cmp);
     };
 
     BST.prototype.inOrderTraversal = function (cb) {
@@ -58,7 +58,7 @@
         while (removeNode.key !== key) {
             parent = removeNode;
 
-            if (key < removeNode.key) {
+            if (this.cmp(removeNode.key, key) > 0) {
                 isLeftChild = true;
                 removeNode = removeNode.left;
             } else {
@@ -163,15 +163,15 @@
         }
     }
 
-    function containsNode(node, value) {
+    function containsNode(node, value, cmp) {
         if (node === null) {
             return false;
         }
 
-        if (value < node.key) {
-            return containsNode(node.left, value);
-        } else if (value > node.key) {
-            return containsNode(node.right, value);
+        if (cmp(node.key, value) > 0) {
+            return containsNode(node.left, value, cmp);
+        } else if (cmp(value, node.key) > 0) {
+            return containsNode(node.right, value, cmp);
         } else {
             return true;
         }
