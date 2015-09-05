@@ -70,7 +70,9 @@ describe('A Binary Search Tree', function () {
         });
     });
 
-    describe('traversal', function () {
+    describe('tree traversal', function () {
+
+        var bstArray;
 
         beforeEach(function () {
             bst.add(50);
@@ -81,11 +83,23 @@ describe('A Binary Search Tree', function () {
             bst.add(15);
             bst.add(10);
             bst.add(85);
+
+            bstArray = [];
         });
 
-        it('correctly traverses the tree in order');
+        it('correctly traverses the tree in order', function () {
+            expect(bstArray).to.be.empty;
+
+            bst.inOrderTraversal(function (key) {
+                bstArray.push(key);
+            });
+
+            expect(bstArray).to.have.length(8);
+            expect(bstArray[0]).to.equal(10);
+            expect(bstArray[bstArray.length - 1]).to.equal(90);
+        });
+
         it('correctly traverses the tree pre order');
         it('correctly traverses the tree post order');
     });
 });
-
