@@ -83,6 +83,8 @@ describe('A Binary Search Tree', function () {
             bst.add(15);
             bst.add(10);
             bst.add(85);
+            bst.add(30);
+            bst.add(100);
 
             bstArray = [];
         });
@@ -94,12 +96,23 @@ describe('A Binary Search Tree', function () {
                 bstArray.push(key);
             });
 
-            expect(bstArray).to.have.length(8);
+            expect(bstArray).to.have.length(10);
             expect(bstArray[0]).to.equal(10);
-            expect(bstArray[bstArray.length - 1]).to.equal(90);
+            expect(bstArray[bstArray.length - 1]).to.equal(100);
         });
 
-        it('correctly traverses the tree pre order');
+        it('correctly traverses the tree pre order', function () {
+            expect(bstArray).to.be.empty;
+
+            bst.preOrderTraversal(function (key) {
+                bstArray.push(key);
+            });
+
+            expect(bstArray).to.have.length(10);
+            expect(bstArray[0]).to.equal(50);
+            expect(bstArray[bstArray.length - 1]).to.equal(100);
+        });
+
         it('correctly traverses the tree post order');
     });
 });
