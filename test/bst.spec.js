@@ -96,8 +96,11 @@ describe('A Binary Search Tree', function () {
                 bstArray.push(key);
             });
 
+            //  bstArray should be [ 10, 15, 25, 30, 50, 75, 80, 85, 90, 100 ]
+
             expect(bstArray).to.have.length(10);
             expect(bstArray[0]).to.equal(10);
+            expect(bstArray[5]).to.equal(75);
             expect(bstArray[bstArray.length - 1]).to.equal(100);
         });
 
@@ -108,11 +111,27 @@ describe('A Binary Search Tree', function () {
                 bstArray.push(key);
             });
 
+            // bstArray should be [ 50, 25, 15, 10, 30, 75, 90, 80, 85, 100 ]
+
             expect(bstArray).to.have.length(10);
             expect(bstArray[0]).to.equal(50);
+            expect(bstArray[5]).to.equal(75);
             expect(bstArray[bstArray.length - 1]).to.equal(100);
         });
 
-        it('correctly traverses the tree post order');
+        it('correctly traverses the tree post order', function () {
+            expect(bstArray).to.be.empty;
+
+            bst.postOrderTraversal(function (key) {
+                bstArray.push(key);
+            });
+
+            // bstArray should be [ 10. 15, 30, 25, 85, 80, 100, 90, 75, 50 ]
+
+            expect(bstArray).to.have.length(10);
+            expect(bstArray[0]).to.equal(10);
+            expect(bstArray[5]).to.equal(80);
+            expect(bstArray[bstArray.length - 1]).to.equal(50);
+        });
     });
 });
