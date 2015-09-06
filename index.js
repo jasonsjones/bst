@@ -34,11 +34,11 @@
         inOrderTraverseNode(this.root, cb);
     };
 
-    BST.prototype.preOrderTraverseNode = function (cb) {
+    BST.prototype.preOrderTraversal = function (cb) {
         preOrderTraverseNode(this.root, cb);
     };
 
-    BST.prototype.postOrderTraverseNode = function (cb) {
+    BST.prototype.postOrderTraversal = function (cb) {
         postOrderTraverseNode(this.root, cb);
     };
 
