@@ -55,7 +55,7 @@
         var parent = this.root;
         var isLeftChild = true;
 
-        while (removeNode.key !== key) {
+        while (this.cmp(removeNode.key, key) !== 0) {
             parent = removeNode;
 
             if (this.cmp(removeNode.key, key) > 0) {
