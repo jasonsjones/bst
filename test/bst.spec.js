@@ -135,4 +135,107 @@ describe('Binary Search Tree', function () {
             });
         });
     });
+
+    describe('with a user-defined comparator for complex objects', function () {
+        var bst;
+
+        beforeEach(function () {
+            bst = new BST(function (a, b) {
+                return a.age - b.age;
+            });
+        });
+
+        afterEach(function () {
+            bst = null;
+        });
+
+        describe('basic setup', function () {
+            it('correctly instantiates an instance', function () {
+                expect(bst).to.exist;
+            });
+
+            it('sets a root node when the first item is added', function () {
+                expect(bst.root).to.not.exist;
+                bst.add({
+                    name: 'Dad',
+                    age: 42
+                });
+                expect(bst.root).to.exist;
+            });
+        });
+
+        describe('basic functionality', function () {
+
+            beforeEach(function () {
+                bst.add({
+                    name: 'Dad',
+                    age: 42
+                });
+                bst.add({
+                    name: 'kid',
+                    age: 6
+                });
+                bst.add({
+                    name: 'Grandpa',
+                    age: 70
+                });
+                bst.add({
+                    name: 'hipster',
+                    age: 25
+                });
+                bst.add({
+                    name: 'brother',
+                    age: 35
+                });
+                bst.add({
+                    name: 'old dude',
+                    age: 85
+                });
+            });
+
+            it('contains a key after it is added to the tree', function () {
+                var personHere = {
+                    name: 'Dad',
+                    age: 42
+                };
+
+                expect(bst.contains(personHere)).to.be.true;
+            });
+
+            it('does not contain a key if it wasn\'t added to the tree', function () {
+                var personNotHere = {
+                    name: 'Mom',
+                    age: 41
+                };
+                expect(bst.contains(personNotHere)).to.be.false;
+            });
+
+            it('returns the min value in the tree', function () {
+                expect(bst.min()).to.have.property('age', 6);
+            });
+
+            it('returns the max value in the tree', function () {
+                expect(bst.max()).to.have.property('age', 85);
+            });
+
+            it('returns false if it attempts to remove a value not in the tree', function () {
+                var personNotHere = {
+                    name: 'Mom',
+                    age: 41
+                };
+                expect(bst.contains(personNotHere)).to.be.false;
+                expect(bst.remove(personNotHere)).to.be.false;
+            });
+
+            it('returns true if it removes a value from the tree', function () {
+                var grandpa = {
+                    name: 'Grandpa',
+                    age: 70
+                };
+                expect(bst.contains(grandpa)).to.be.true;
+                expect(bst.remove(grandpa)).to.be.true;
+                expect(bst.contains(grandpa)).to.be.false;
+            });
+        });
+    });
 });
