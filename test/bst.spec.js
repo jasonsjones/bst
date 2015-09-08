@@ -39,11 +39,25 @@ describe('Binary Search Tree', function () {
                 bst.add(75);
                 bst.add(25);
                 bst.add(90);
+                bst.add(30);
                 bst.add(80);
                 bst.add(15);
                 bst.add(10);
                 bst.add(85);
             });
+
+            /*  bst should look like this after all the adds have been made:
+             *
+             *                       50 <-- root node
+             *                      /  \
+             *                    25    75
+             *                   /  \     \
+             *                 15    30    90
+             *                /           /
+             *              10          80
+             *                            \
+             *                             85
+             */
 
             it('contains a key after it is added to the tree', function () {
                 expect(bst.contains(75)).to.be.true;
@@ -63,10 +77,28 @@ describe('Binary Search Tree', function () {
                 expect(bst.remove(32)).to.be.false;
             });
 
-            it('returns true if it removes a value from the tree', function () {
-                expect(bst.contains(90)).to.be.true;
-                expect(bst.remove(90)).to.be.true;
-                expect(bst.contains(90)).to.be.false;
+            it('removes a leaf node', function () {
+                expect(bst.remove(85)).to.be.true;
+                expect(bst.contains(85)).to.be.false;
+            });
+
+            it('removes a node with one child', function () {
+                expect(bst.remove(15)).to.be.true;
+                expect(bst.contains(15)).to.be.false;
+                expect(bst.root.left.left.key).to.equal(10);
+            });
+
+            it('removes a node with two children', function () {
+                expect(bst.remove(25)).to.be.true;
+                expect(bst.contains(25)).to.be.false;
+                expect(bst.root.left.key).to.equal(30);
+                expect(bst.root.left.left.key).to.equal(15);
+            });
+
+            it('removes the root node and assigns the correct replacement', function () {
+                expect(bst.remove(50)).to.be.true;
+                expect(bst.contains(50)).to.be.false;
+                expect(bst.root.key).to.equal(75);
             });
         });
 
@@ -88,6 +120,19 @@ describe('Binary Search Tree', function () {
 
                 bstArray = [];
             });
+
+            /*  bst should look like this after all the adds have been made:
+             *
+             *                       50 <-- root node
+             *                      /  \
+             *                    25    75
+             *                   /  \    \
+             *                 15    30   90
+             *                 /         /  \
+             *               10        80    100
+             *                           \
+             *                            85
+             */
 
             it('correctly traverses the tree in order', function () {
                 expect(bstArray).to.be.empty;
@@ -176,6 +221,10 @@ describe('Binary Search Tree', function () {
                     age: 6
                 });
                 bst.add({
+                    name: 'toddler',
+                    age: 3
+                });
+                bst.add({
                     name: 'Grandpa',
                     age: 70
                 });
@@ -211,7 +260,7 @@ describe('Binary Search Tree', function () {
             });
 
             it('returns the min value in the tree', function () {
-                expect(bst.min()).to.have.property('age', 6);
+                expect(bst.min()).to.have.property('age', 3);
             });
 
             it('returns the max value in the tree', function () {
@@ -227,14 +276,43 @@ describe('Binary Search Tree', function () {
                 expect(bst.remove(personNotHere)).to.be.false;
             });
 
-            it('returns true if it removes a value from the tree', function () {
-                var grandpa = {
+            it('removes a leaf node', function () {
+                var leaf = {
+                    name: 'old dude',
+                    age: 85
+                };
+                expect(bst.remove(leaf)).to.be.true;
+                expect(bst.contains(leaf)).to.be.false;
+            });
+
+            it('removes a node with one child', function () {
+                var oneChild = {
                     name: 'Grandpa',
                     age: 70
                 };
-                expect(bst.contains(grandpa)).to.be.true;
-                expect(bst.remove(grandpa)).to.be.true;
-                expect(bst.contains(grandpa)).to.be.false;
+                expect(bst.remove(oneChild)).to.be.true;
+                expect(bst.contains(oneChild)).to.be.false;
+                expect(bst.root.right.key).to.have.property('age', 85);
+            });
+
+            it('removes a node with two children', function () {
+                var twoChildren = {
+                    name: 'kid',
+                    age: 6
+                };
+                expect(bst.remove(twoChildren)).to.be.true;
+                expect(bst.contains(twoChildren)).to.be.false;
+                expect(bst.root.left.key).to.have.property('age', 25);
+            });
+
+            it('removes the root node and assigns the correct replacement', function () {
+                var root = {
+                    name: 'Dad',
+                    age: 42
+                };
+                expect(bst.remove(root)).to.be.true;
+                expect(bst.contains(root)).to.be.false;
+                expect(bst.root.key).to.have.property('age', 70);
             });
         });
     });
