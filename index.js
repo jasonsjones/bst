@@ -7,20 +7,20 @@
 (function () {
     'use strict';
 
-    var BSTNode = function (value) {
+    function BSTNode(value) {
         this.key = value;
         this.right = null;
         this.left = null;
-    };
+    }
 
     function basicCompare(a, b) {
         return a - b;
     }
 
-    var BST = function (compareFn) {
+    function BST (compareFn) {
         this.root = null;
         this.cmp = compareFn || basicCompare;
-    };
+    }
 
     BST.prototype.add = function (value) {
         var newNode = new BSTNode(value);
