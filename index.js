@@ -7,20 +7,49 @@
 (function () {
     'use strict';
 
+    /**
+     * Representation of a binary search tree node.  A binary search tree
+     * is composed of one or more nodes.  When instantiated, the key of the
+     * new node is set to value while the left and right children are set to
+     * null.
+     *
+     * @constructor
+     * @param {object|string|number} value the value to set as the key of the
+     *        node
+     */
     function BSTNode(value) {
         this.key = value;
         this.right = null;
         this.left = null;
     }
 
+    /**
+     * Default comparator function.  This function is used if no function
+     * is provided as the one parameter to the BST constructor.
+     *
+     * @param {number|string} a the first item to compare
+     * @param {number|string} b the second item to compare
+     *
+     * @returns the difference between the first item and the second. If the
+     *          returned value is positive, a is greater than b; otherwise,
+     *          a is less than or equal to b.
+     */
     function basicCompare(a, b) {
         return a - b;
     }
 
-    function BST (compareFn) {
+    function BST(compareFn) {
         this.root = null;
         this.cmp = compareFn || basicCompare;
     }
+
+    /*
+     * All member functions attached to the binary search tree prototype.  All
+     * binary search tree instances will share these methods, meaning there will
+     * NOT be copies made for each instance.  This can be a potential memory
+     * savings since there can be several different binary search tree instances
+     * instantiated.
+     */
 
     BST.prototype.add = function (value) {
         var newNode = new BSTNode(value);
