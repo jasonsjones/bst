@@ -38,6 +38,13 @@
         return a - b;
     }
 
+    /**
+     * Creates a new Binary Search Tree instance
+     *
+     * @constructor
+     * @param {function} compareFn the function to use as the comparator to determine
+     *        the relative ordering for the nodes of the binary search tree
+     */
     function BST(compareFn) {
         this.root = null;
         this.cmp = compareFn || basicCompare;
@@ -51,6 +58,11 @@
      * instantiated.
      */
 
+    /**
+     * Adds a node to the binary search tree containing value
+     *
+     * @param {object|string|number} value the value to add to the binary search tree
+     */
     BST.prototype.add = function (value) {
         var newNode = new BSTNode(value);
 
@@ -61,18 +73,45 @@
         }
     };
 
+    /**
+     * Determines if the binary search tree contains value
+     *
+     * @param {object|string|number} value the value to determine if it is
+     *        contained in the binary search tree
+     * @returns {boolean} true if the value is contained in the binary search
+     *          tree, false otherwise
+     */
     BST.prototype.contains = function (value) {
         return containsNode(this.root, value, this.cmp);
     };
 
+    /**
+     * Traverses the binary search tree in order, meaning it will visit
+     * each node in the tree in the order defined by the comparator fn.
+     * Typically this is done from smallest to largest value.
+     *
+     * @param {function} cb callback function to execute on each node visited
+     */
     BST.prototype.inOrderTraversal = function (cb) {
         inOrderTraverseNode(this.root, cb);
     };
 
+    /**
+     * Traverses the binary search tree pre-order, meaning a particular node is
+     * visited before any of its children.
+     *
+     * @param {function} cb callback function to execute on each node visited
+     */
     BST.prototype.preOrderTraversal = function (cb) {
         preOrderTraverseNode(this.root, cb);
     };
 
+    /**
+     * Traverses the binary search tree post-order, meaning a particlar node is
+     * visited after all of its children have been visited.
+     *
+     * @param {function} cb callback function to execute on each node visited
+     */
     BST.prototype.postOrderTraversal = function (cb) {
         postOrderTraverseNode(this.root, cb);
     };
