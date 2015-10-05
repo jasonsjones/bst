@@ -116,10 +116,22 @@
         postOrderTraverseNode(this.root, cb);
     };
 
+    /**
+     * Returns the minimum value contained in the binary search tree
+     *
+     * @returns {object|string|number} the mininmum value contained in the
+     *          binary search tree
+     */
     BST.prototype.min = function () {
         return minNode(this.root);
     };
 
+    /**
+     * Returns the maximum value contained in the binary search tree
+     *
+     * @returns {object|string|number} the maximum value contained in the
+     *          binary search tree
+     */
     BST.prototype.max = function () {
         return maxNode(this.root);
     };
@@ -129,6 +141,7 @@
         var parent = this.root;
         var isLeftChild = true;
 
+        // find the node to remove
         while (this.cmp(removeNode.key, key) !== 0) {
             parent = removeNode;
 
