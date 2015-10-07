@@ -339,6 +339,13 @@
         }
     }
 
+    /**
+     * Helper function to find the minimum value of the binary search tree
+     *
+     * @param {object} node the root node to start the path to determine the
+     *        node with the minimum value
+     * @returns {object|string|number} the minimum value contained in the tree
+     */
     function minNode(node) {
         if (node) {
             while (node && node.left !== null) {
@@ -349,6 +356,13 @@
         return null;
     }
 
+    /**
+     * Helper function to find the maximum value of the binary search tree
+     *
+     * @param {object} node the root node to start the path to determine the
+     *        node with the maximum value
+     * @returns {object|string|number} the maximum value contained in the tree
+     */
     function maxNode(node) {
         if (node) {
             while (node && node.right !== null) {
@@ -359,6 +373,14 @@
         return null;
     }
 
+    /**
+     * Helper function to get the replacement node when removing a node that has
+     * two children.  The replacement node is the the left most node of the right
+     * child of the node to be removed
+     *
+     * @param {object} nodeToRemove the node that is to be removed
+     * @returns {object} the node to be used to replace the node that is to be removed
+     */
     function getReplacementNode(nodeToRemove) {
         var replacementParent = nodeToRemove;
         var replacementNode = nodeToRemove;
