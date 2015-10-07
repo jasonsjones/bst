@@ -59,7 +59,7 @@
      */
 
     /**
-     * Adds a node to the binary search tree containing value
+     * Adds a node to the binary search tree containing 'value'
      *
      * @param {object|string|number} value the value to add to the binary search tree
      */
@@ -136,6 +136,14 @@
         return maxNode(this.root);
     };
 
+    /**
+     * Removes the node with key from the binary search tree
+     *
+     * @param {object|string|number} key the key of the node to remove from the
+     *        binary search tree.
+     *
+     * @returns {boolean} true if the node was removed; false otherwise
+     */
     BST.prototype.remove = function (key) {
         var removeNode = this.root;
         var parent = this.root;
@@ -222,6 +230,7 @@
         return true;
     };
 
+    // expose the binary search tree
     module.exports = BST;
 
     if (module.parent === null) {
@@ -232,6 +241,15 @@
     }
 
     /********** helper functions **********/
+
+    /**
+     * Recursive helper function to add a node to the binary search tree
+     *
+     * @param {object} node the root node to start the path to determine where
+     *        add the new node
+     * @param {object} newNode the new node to add
+     * @param {function} cmp the comparator function to determine relative ordering
+     */
     function addNode(node, newNode, cmp) {
         if (cmp(node.key, newNode.key) > 0) {
             if (node.left === null) {
@@ -250,6 +268,15 @@
         }
     }
 
+    /**
+     * Recursive helper function to determine if the binary search tree contains
+     * a node with 'value' as its key
+     *
+     * @param {object} node the root node to start the path to determine if
+     *        the binary search tree contains the value
+     * @param {object|string|number} value the value to find in the binary search tree
+     * @param {function} cmp the comparator function to determine relative ordering
+     */
     function containsNode(node, value, cmp) {
         if (node === null) {
             return false;
@@ -264,6 +291,14 @@
         }
     }
 
+    /**
+     * Recursive helper function to traverse the binary search tree in order.
+     *
+     * @param {object} node the root node to start the path to determine where
+     *        to start the in order traversal
+     * @param {function} cb the callback function to call passing in the key for
+     *        each node in the binary search tree
+     */
     function inOrderTraverseNode(node, cb) {
         if (node !== null) {
             inOrderTraverseNode(node.left, cb);
@@ -272,6 +307,14 @@
         }
     }
 
+    /**
+     * Recursive helper function to traverse the binary search tree pre order.
+     *
+     * @param {object} node the root node to start the path to determine where
+     *        to start the pre order traversal
+     * @param {function} cb the callback function to call passing in the key for
+     *        each node in the binary search tree
+     */
     function preOrderTraverseNode(node, cb) {
         if (node !== null) {
             cb(node.key);
@@ -280,6 +323,14 @@
         }
     }
 
+    /**
+     * Recursive helper function to traverse the binary search tree post order.
+     *
+     * @param {object} node the root node to start the path to determine where
+     *        to start the post order traversal
+     * @param {function} cb the callback function to call passing in the key for
+     *        each node in the binary search tree
+     */
     function postOrderTraverseNode(node, cb) {
         if (node !== null) {
             postOrderTraverseNode(node.left, cb);
