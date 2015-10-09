@@ -25,4 +25,7 @@ Work in progress; check back later...
 ## API
 **Available methods for a binary search tree instance:**
 
+### add(value)
+  Adds a node to the binary search tree containing 'value'
+
 Work in progress; check back later...
