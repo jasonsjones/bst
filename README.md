@@ -1,3 +1,6 @@
+[![Codeship Status for jasonsjones/bst]
+(https://codeship.com/projects/41888b60-506f-0133-6e67-0a1605d1a993/status?branch=master)]
+(https://codeship.com/projects/107665)
 # Binary Search Tree
 
 ## Description
@@ -27,5 +30,13 @@ Work in progress; check back later...
 
 ### add(value)
   Adds a node to the binary search tree containing 'value'
+
+### contains(value)
+  Determines if the binary search tree contains 'value'
+
+### inOrderTraversal(callback)
+  Traverses the binary search tree in order, meaning it will visit
+  each node in the tree in the order defined by the comparator function.
+  Typically this is done from smallest to largest value.
 
 Work in progress; check back later...
