@@ -23,6 +23,19 @@ this implementation in any other context/environment; only tested with node.js_
 
 ## Basic Usage
 
+Install with npm :
+
+```bash
+# not yet published to npm...
+# but when it is, run:
+npm install bst--save
+```
+
+```javascript
+var BST = require('bst');
+var bst = new BST();
+```
+
 Work in progress; check back later...
 
 ## API
@@ -38,5 +51,22 @@ Work in progress; check back later...
   Traverses the binary search tree in order, meaning it will visit
   each node in the tree in the order defined by the comparator function.
   Typically this is done from smallest to largest value.
+
+### preOrderTraversal(callback)
+  Traverses the binary search tree pre-order, meaning a particular node is
+  visited before any of its children.
+
+### postOrderTraversal(callback)
+  Traverses the binary search tree post-order, meaning a particlar node is
+  visited after all of its children have been visited.
+
+### min()
+  Returns the minimum value contained in the binary search tree
+
+### max()
+  Returns the maximum value contained in the binary search tree
+
+### remove(key)
+  Removes the node with key from the binary search tree
 
 Work in progress; check back later...
