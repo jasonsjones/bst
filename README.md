@@ -49,7 +49,22 @@ npm install bst--save
 
 ```javascript
 var BST = require('bst');
+
+// binary search tree of ints using default comparator
 var bst = new BST();
+bst.add(7);
+bst.add(4);
+bst.add(10);
+bst.add(3);
+bst.add(11);
+
+console.log(bst.contains(10));
+// --> true
+
+bst.inOrderTraversal(function (key) {
+    console.log(key);
+});
+// --> 3, 4, 7, 10, 11
 ```
 
 Work in progress; check back later...
