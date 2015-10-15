@@ -37,7 +37,7 @@ tested this implementation in any other context/environment; only tested with no
 
 ----
 
-## Basic Usage
+## Basic Usage (for primitive objects)
 
 Install with npm :
 
@@ -56,7 +56,9 @@ bst.add(7);
 bst.add(4);
 bst.add(10);
 bst.add(3);
+bst.add(5);
 bst.add(11);
+bst.add(9);
 
 console.log(bst.contains(10));
 // --> true
@@ -64,7 +66,62 @@ console.log(bst.contains(10));
 bst.inOrderTraversal(function (key) {
     console.log(key);
 });
-// --> 3, 4, 7, 10, 11
+// --> 3, 4, 5, 7, 9, 10, 11
+
+bst.min();
+// --> 3
+
+bst.max();
+// --> 11
+
+bst.remove(9);
+// --> true
+
+bst.inOrderTraversal(function (key) {
+    console.log(key);
+});
+// --> 3, 4, 5, 7, 10, 11
+
+bst.preOrderTraversal(function (key) {
+    console.log(key);
+});
+// --> 7, 4, 3, 5, 10, 11
+```
+
+## Usage for more complex objects
+
+When using this implementation to store more complex objects, a comparator
+function needs to be provided to the constructor when initializing the
+binary search tree.
+
+Let's look at an example.  Assume there is a 'person' object defined as:
+
+```javascript
+function Person(opts) {
+    this.name = opts.name || "no name";
+    this.age = opts.age || null;
+}
+```
+
+Assuming we would like to compare the person objects by age, we would define
+the comparator function as:
+
+```javascript
+// comparator function for the person object
+function cmp(a, b) {
+    return a.age - b.age;
+}
+```
+
+Given the above functions, usage of this binary search tree is very similar to
+the basic usage with the exception of providing the comparator function to
+the person constructor.
+
+```javascript
+var BST = require('bst');
+var bst = new BST(cmp);
+
+bst.add( new Person({name: "Alice", age: 40}) );
 ```
 
 Work in progress; check back later...
