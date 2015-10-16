@@ -1,6 +1,5 @@
-[![Codeship Status for jasonsjones/bst]
-(https://codeship.com/projects/41888b60-506f-0133-6e67-0a1605d1a993/status?branch=master)]
-(https://codeship.com/projects/107665)
+[![Codeship Status][codeship-image]][codeship-url] [![npm version][npm-image]][npm-url] [![dependency status][dm-image]][dm-url]
+
 # Binary Search Tree
 
 ## Description
@@ -122,9 +121,26 @@ var BST = require('bst');
 var bst = new BST(cmp);
 
 bst.add( new Person({name: "Alice", age: 40}) );
-```
+bst.add( new Person({name: "Bob", age: 32}) );
+bst.add( new Person({name: "Charlie", age: 50}) );
+bst.add( new Person({name: "Dave", age: 25}) );
+bst.add( new Person({name: "Eric", age: 45}) );
 
-Work in progress; check back later...
+bst.inOrderTraversal(function (key) {
+    console.log(key);
+});
+// --> { name: 'Dave', age: 25 }
+// --> { name: 'Bob', age: 32 }
+// --> { name: 'Alice', age: 40 }
+// --> { name: 'Eric', age: 45 }
+// --> { name: 'Charlie', age: 50 }
+
+console.log(bst.min());
+// --> { name: 'Dave', age: 25 }
+
+console.log(bst.max());
+// --> { name: 'Charlie', age: 50 }
+```
 
 ## API
 **Available methods for a binary search tree instance:**
@@ -157,4 +173,9 @@ Work in progress; check back later...
 ### remove(key)
   Removes the node with key from the binary search tree
 
-Work in progress; check back later...
+[npm-image]:https://badge.fury.io/js/bst.svg
+[npm-url]:http://npmjs.org/package/bst
+[codeship-image]:https://codeship.com/projects/41888b60-506f-0133-6e67-0a1605d1a993/status?branch=master
+[codeship-url]:https://codeship.com/projects/107665
+[dm-image]:https://david-dm.org/jasonsjones/bst.svg
+[dm-url]:https://david-dm.org/jasonsjones/bst
