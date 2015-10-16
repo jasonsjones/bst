@@ -173,6 +173,10 @@ console.log(bst.max());
 ### remove(key)
   Removes the node with key from the binary search tree
 
+----
+## License
+MIT &copy; Jason Jones
+
 [npm-image]:https://badge.fury.io/js/bst.svg
 [npm-url]:http://npmjs.org/package/bst
 [codeship-image]:https://codeship.com/projects/41888b60-506f-0133-6e67-0a1605d1a993/status?branch=master
