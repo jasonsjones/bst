@@ -1,6 +1,6 @@
 {
-  "name": "binary-search-tree",
-  "version": "0.1.1",
+  "name": "bst-adt",
+  "version": "0.1.0",
   "description": "Javascript implementation of a binary search tree data structure",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,8 @@
   },
   "keywords": [
     "binary search tree",
-    "data structure"
+    "data structure",
+    "abstract data type"
   ],
   "author": "Jason Jones",
   "license": "MIT",
