@@ -26,6 +26,9 @@ function is necessary when storing more complex objects.  If no comparator funct
 provided, the binary search tree  will utilize the default comparator function which will
 only work on primitive types.  See the basic usage section for a specific example.
 
+*NOTE: There are NO tree re-balancing capabilities available yet in this
+implementation*
+
 #### Environment:
 
 Although this implementation is designed to be used with [Node.js](http://www.nodejs.org),
@@ -155,6 +158,9 @@ console.log(bst.max());
   Traverses the binary search tree in order, meaning it will visit
   each node in the tree in the order defined by the comparator function.
   Typically this is done from smallest to largest value.
+
+  The callback function has a signature of `function (key) {}` where the key
+  is value of each node traversed.
 
 ### preOrderTraversal(callback)
   Traverses the binary search tree pre-order, meaning a particular node is
