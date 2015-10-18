@@ -181,8 +181,8 @@ console.log(bst.max());
 ## License
 MIT &copy; Jason Jones
 
-[npm-image]:https://badge.fury.io/js/bst.svg
-[npm-url]:http://npmjs.org/package/bst
+[npm-image]:https://badge.fury.io/js/bst-adt.svg
+[npm-url]:http://npmjs.org/package/bst-adt
 [codeship-image]:https://codeship.com/projects/41888b60-506f-0133-6e67-0a1605d1a993/status?branch=master
 [codeship-url]:https://codeship.com/projects/107665
 [dm-image]:https://david-dm.org/jasonsjones/bst.svg
