@@ -44,8 +44,6 @@ tested this implementation in any other context/environment; only tested with no
 Install with npm :
 
 ```bash
-# not yet published to npm...
-# but when it is, run:
 npm install bst--save
 ```
 
