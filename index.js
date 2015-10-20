@@ -1,7 +1,7 @@
 /**
  * @fileOverview Implementation of a binary search tree data structure
  * @author Jason S. Jones
- * @version 0.1.2
+ * @version 0.1.3
  * @license MIT
  */
 (function () {
