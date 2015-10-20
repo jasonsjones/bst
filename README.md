@@ -44,11 +44,11 @@ tested this implementation in any other context/environment; only tested with no
 Install with npm :
 
 ```bash
-npm install bst--save
+npm install bst-adt --save
 ```
 
 ```javascript
-var BST = require('bst');
+var BST = require('bst-adt');
 
 // binary search tree of ints using default comparator
 var bst = new BST();
