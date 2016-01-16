@@ -1,4 +1,4 @@
-[![Codeship Status][codeship-image]][codeship-url] [![npm version][npm-image]][npm-url] [![dependency status][dm-image]][dm-url]
+[![codeship status][codeship-image]][codeship-url] [![npm version][npm-image]][npm-url] [![dependency status][dm-image]][dm-url] [![devDependency status][devdep-image]][devdep-url]
 
 # Binary Search Tree
 
@@ -187,3 +187,5 @@ MIT &copy; Jason Jones
 [codeship-url]:https://codeship.com/projects/107665
 [dm-image]:https://david-dm.org/jasonsjones/bst.svg
 [dm-url]:https://david-dm.org/jasonsjones/bst
+[devdep-image]:https://david-dm.org/jasonsjones/bst/dev-status.svg
+[devdep-url]:https://david-dm.org/jasonsjones/bst#info=devDependencies
