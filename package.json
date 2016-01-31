@@ -23,7 +23,6 @@
   "homepage": "https://github.com/jasonsjones/bst",
   "devDependencies": {
     "chai": "3.4.1",
-    "gulp": "^3.9.0",
     "gulp-jscs": "^3.0.2",
     "gulp-jshint": "^2.0.0",
     "gulp-load-plugins": "^1.2.0",
