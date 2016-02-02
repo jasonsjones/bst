@@ -30,6 +30,15 @@ describe('Binary Search Tree', function () {
                 bst.add(50);
                 expect(bst.root).to.exist;
             });
+
+            it('returns a depth of 0 for an empty tree', function () {
+                expect(bst.depth(bst.root)).to.equal(0);
+            });
+
+            it('returns a depth of 1 for a tree with one node', function () {
+                bst.add(50);
+                expect(bst.depth(bst.root)).to.equal(1);
+            });
         });
 
         describe('basic functionality', function () {
@@ -70,6 +79,10 @@ describe('Binary Search Tree', function () {
 
             it('returns the max value in the tree', function () {
                 expect(bst.max()).to.equal(90);
+            });
+
+            it('returns a depth of 5', function () {
+                expect(bst.depth(bst.root)).to.equal(5);
             });
 
             it('returns false if it attempts to remove a value not in the tree', function () {

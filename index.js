@@ -85,6 +85,19 @@
     };
 
     /**
+     *
+     */
+    BST.prototype.depth = function (root) {
+        if (root === null) {
+            return 0;
+        }
+        var leftDepth = this.depth(root.left);
+        var rightDepth = this.depth(root.right);
+
+        return (leftDepth > rightDepth) ? 1 + leftDepth : 1 + rightDepth;
+    };
+
+    /**
      * Traverses the binary search tree in order, meaning it will visit
      * each node in the tree in the order defined by the comparator fn.
      * Typically this is done from smallest to largest value.
