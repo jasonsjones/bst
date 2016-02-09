@@ -85,8 +85,8 @@
     };
 
     /**
-     * Determines the depth of the binary search tree.  The depth is defined
-     * as the number of levels with at least one node.
+     * Determines the depth of the binary search tree from a given root.  The depth
+     * is defined as the number of levels with at least one node.
      *
      * @param {object} root the root node of the tree to determine the depth
      * @returns {number} the depth of the binary search tree

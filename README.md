@@ -152,6 +152,10 @@ console.log(bst.max());
 ### contains(value)
   Determines if the binary search tree contains 'value'
 
+### depth(root)
+  Determines the depth of the binary search tree from a give root.  The depth
+  is defined as the number of levels that contain at least one node.
+
 ### inOrderTraversal(callback)
   Traverses the binary search tree in order, meaning it will visit
   each node in the tree in the order defined by the comparator function.
